@@ -23,11 +23,12 @@ public class ClassPathXmlApplicationContext {
     /**
      * 获取Bean对象
      *
-     * @param beanId
+     * @param beanClass
      * @return
      * @throws Exception
      */
-    public <T> T getBean(String beanId) throws Exception {
+    public <T> T getBean(Class<?> beanClass) throws Exception {
+        String beanClassName = beanClass.getName();
         // 1.读取xml配置文件
         // 1.1创建xml解析器
         SAXReader saxReader = new SAXReader();
@@ -41,9 +42,9 @@ public class ClassPathXmlApplicationContext {
         for (Element beanElement : beanElements) {
             // 2.使用beanId查找bean配置，并获取配置文件中class的地址(为了与参数beanId区分开，我们命名为beanElementId)
             //2.1使用beanId查找bean配置
-            String beanElementId = beanElement.attributeValue("id");
+            String beanElementClass = beanElement.attributeValue("class");
             //如果不是当前的bean，则跳出本次循环
-            if (!beanId.equals(beanElementId)) {
+            if (!beanClassName.equals(beanElementClass)) {
                 continue;
             }
             // 2.2获取bean对应的Class地址
