@@ -24,7 +24,7 @@ public class SpringIocTest {
         //读取User的XML配置文件
         ClassPathXmlApplicationContext application = new ClassPathXmlApplicationContext("Application-context.xml");
         //获取User的Bean对象
-        TwelvetServiceImpl bean = application.getBean(TwelvetService.class);
+        TwelvetService bean = application.getBean(TwelvetService.class);
         log.info("User：{}", bean);
     }
 

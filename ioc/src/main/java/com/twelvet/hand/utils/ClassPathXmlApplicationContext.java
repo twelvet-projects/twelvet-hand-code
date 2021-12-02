@@ -27,7 +27,7 @@ public class ClassPathXmlApplicationContext {
      * @return
      * @throws Exception
      */
-    public <T> T getBean(Class<?> beanClass) throws Exception {
+    public <T> T getBean(Class<T> beanClass) throws Exception {
         String beanClassName = beanClass.getName();
         // 1.读取xml配置文件
         // 1.1创建xml解析器
