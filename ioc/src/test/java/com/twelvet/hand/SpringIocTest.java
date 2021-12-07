@@ -8,6 +8,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author twelvet
  */
@@ -24,8 +27,12 @@ public class SpringIocTest {
         //读取User的XML配置文件
         ClassPathXmlApplicationContext application = new ClassPathXmlApplicationContext("Application-context.xml");
         //获取User的Bean对象
-        TwelvetService bean = application.getBean(TwelvetService.class);
-        log.info("User：{}", bean);
+        TwelvetService bean = application.getBean(TwelvetServiceImpl.class);
+        bean.say();
+
+
+        Map<String, Object> map = new HashMap<>();
+
     }
 
 }

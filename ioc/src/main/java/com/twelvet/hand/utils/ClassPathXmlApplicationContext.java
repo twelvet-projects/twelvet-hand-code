@@ -27,6 +27,7 @@ public class ClassPathXmlApplicationContext {
      * @return
      * @throws Exception
      */
+    @SuppressWarnings("unchecked")
     public <T> T getBean(Class<T> beanClass) throws Exception {
         String beanClassName = beanClass.getName();
         // 1.读取xml配置文件

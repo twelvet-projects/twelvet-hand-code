@@ -1,9 +1,9 @@
 package com.twelvet.hand.service.impl;
 
-import com.twelvet.hand.annotation.Service;
 import com.twelvet.hand.service.TwelvetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 /**
  * @author twelvet
