@@ -1,4 +1,4 @@
-package com.twelvet.hand.service;
+package com.twelvet.hand.ioc.service;
 
 /**
  * @author twelvet

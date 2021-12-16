@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-    <bean id="user1" class="com.twelvet.hand.domain.User">
+    <bean id="user1" class="com.twelvet.hand.ioc.domain.User">
         <property name="userId" value="0001"/>
         <property name="userName" value="张三"/>
     </bean>
 
-    <bean id="user" class="com.twelvet.hand.domain.User">
+    <bean id="user" class="com.twelvet.hand.ioc.domain.User">
         <property name="userId" value="0002"/>
         <property name="userName" value="李四"/>
     </bean>
 
-    <bean id="twelvetService" class="com.twelvet.hand.service.impl.TwelvetServiceImpl" />
+    <bean id="twelvetService" class="com.twelvet.hand.ioc.service.impl.TwelvetServiceImpl" />
 
 </beans>

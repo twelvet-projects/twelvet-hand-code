@@ -1,4 +1,4 @@
-package com.twelvet.hand.annotation;
+package com.twelvet.hand.ioc.annotation;
 
 import java.lang.annotation.*;
 

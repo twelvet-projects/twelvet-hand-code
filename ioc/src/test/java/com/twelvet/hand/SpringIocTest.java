@@ -1,9 +1,9 @@
 package com.twelvet.hand;
 
-import com.twelvet.hand.annotation.Autowired;
-import com.twelvet.hand.service.TwelvetService;
-import com.twelvet.hand.service.impl.TwelvetServiceImpl;
-import com.twelvet.hand.utils.ClassPathXmlApplicationContext;
+import com.twelvet.hand.ioc.annotation.Autowired;
+import com.twelvet.hand.ioc.service.TwelvetService;
+import com.twelvet.hand.ioc.service.impl.TwelvetServiceImpl;
+import com.twelvet.hand.ioc.utils.ClassPathXmlApplicationContext;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

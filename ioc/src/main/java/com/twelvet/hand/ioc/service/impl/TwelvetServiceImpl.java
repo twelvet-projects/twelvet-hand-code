@@ -1,6 +1,6 @@
-package com.twelvet.hand.service.impl;
+package com.twelvet.hand.ioc.service.impl;
 
-import com.twelvet.hand.service.TwelvetService;
+import com.twelvet.hand.ioc.service.TwelvetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

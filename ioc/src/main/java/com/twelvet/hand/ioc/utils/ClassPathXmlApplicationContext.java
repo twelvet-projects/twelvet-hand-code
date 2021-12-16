@@ -1,4 +1,4 @@
-package com.twelvet.hand.utils;
+package com.twelvet.hand.ioc.utils;
 
 import org.dom4j.Document;
 import org.dom4j.Element;

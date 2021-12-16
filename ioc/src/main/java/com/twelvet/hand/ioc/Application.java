@@ -1,6 +1,6 @@
-package com.twelvet.hand;
+package com.twelvet.hand.ioc;
 
-import com.twelvet.hand.service.TwelvetService;
+import com.twelvet.hand.ioc.service.TwelvetService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 

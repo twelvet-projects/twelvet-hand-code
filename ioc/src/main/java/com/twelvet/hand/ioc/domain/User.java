@@ -1,4 +1,4 @@
-package com.twelvet.hand.domain;
+package com.twelvet.hand.ioc.domain;
 
 public class User {
     private String userId;

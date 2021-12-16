@@ -10,6 +10,8 @@
     <version>1.0.0</version>
     <modules>
         <module>ioc</module>
+        <module>problems</module>
+        <module>design</module>
     </modules>
 
     <name>twelvet</name>
@@ -48,7 +50,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
