@@ -18,8 +18,8 @@ public class 两数之和 {
 
     @Test
     public void start() {
-        int[] nums = {1,8};
-        int[] ints = twoSum(nums, 9);
+        int[] nums = {1,2,2,9,5,6};
+        int[] ints = twoSum(nums, 10);
 
         $.fmt(ints);
     }
@@ -31,8 +31,8 @@ public class 两数之和 {
      */
     public int[] twoSum(int[] nums, int target) {
         int n = nums.length;
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
                 if (nums[i] + nums[j] == target) {
                     return new int[]{i, j};
                 }
