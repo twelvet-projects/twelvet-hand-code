@@ -23,12 +23,30 @@ public class 两数相加 {
 
     @Test
     public void start() {
+        ListNode l1 = new ListNode(2);
+
+        ListNode l11 = new ListNode(4);
+        l1.next = l11;
+        ListNode l12 = new ListNode(3);
+        l11.next = l12;
+
+        ListNode l2 = new ListNode(5);
+
+        ListNode l21 = new ListNode(6);
+        l2.next = l21;
+        ListNode l22 = new ListNode(4);
+        l21.next = l22;
+
+        ListNode listNode = addTwoNumbers(l1, l2);
+
+
+        fmt(listNode);
+
 
     }
 
 
     /**
-     *
      * @param l1 ListNode
      * @param l2 ListNode
      * @return ListNode
@@ -58,6 +76,21 @@ public class 两数相加 {
             cur.next = new ListNode(carry);
         }
         return pre.next;
+    }
+
+    /**
+     * 输出
+     *
+     * @param listNode ListNode
+     */
+    public void fmt(ListNode listNode) {
+        System.out.print(listNode.val);
+
+        ListNode next = listNode.next;
+
+        if (next != null) {
+            fmt(next);
+        }
     }
 
 }
