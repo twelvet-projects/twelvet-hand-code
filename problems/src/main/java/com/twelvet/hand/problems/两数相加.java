@@ -13,10 +13,6 @@ import org.junit.Test;
  * 请你将两个数相加，并以相同形式返回一个表示和的链表。
  * <p>
  * 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
- * <p>
- * 来源：力扣（LeetCode）
- * 链接：https://leetcode-cn.com/problems/add-two-numbers
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class 两数相加 {
 
@@ -28,10 +24,7 @@ public class 两数相加 {
 
         ListNode listNode = addTwoNumbers(l1, l2);
 
-
         fmt(listNode);
-
-
     }
 
 
@@ -41,30 +34,25 @@ public class 两数相加 {
      * @return ListNode
      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode pre = new ListNode(0);
-        ListNode cur = pre;
-        int carry = 0;
-        while (l1 != null || l2 != null) {
-            int x = l1 == null ? 0 : l1.val;
-            int y = l2 == null ? 0 : l2.val;
-            int sum = x + y + carry;
-
-            carry = sum / 10;
-            sum = sum % 10;
-            cur.next = new ListNode(sum);
-
-            cur = cur.next;
-            if (l1 != null) {
-                l1 = l1.next;
+        if (l1 != null || l2 != null) {
+            if (l1 == null) {
+                l1 = new ListNode(0);
             }
-            if (l2 != null) {
-                l2 = l2.next;
+            if (l2 == null) {
+                l2 = new ListNode(0);
             }
+            int rval = l1.val + l2.val;
+            if (rval >= 10) {
+                rval = rval % 10;
+                if (l1.next != null) {
+                    l1.next.val += 1;
+                } else {
+                    l1.next = new ListNode(1);
+                }
+            }
+            return new ListNode(rval, addTwoNumbers(l1.next, l2.next));
         }
-        if (carry == 1) {
-            cur.next = new ListNode(carry);
-        }
-        return pre.next;
+        return null;
     }
 
     /**
@@ -83,21 +71,21 @@ public class 两数相加 {
     }
 
     /**
-     * 组装链表
+     * 组装链表（逆序储存）
      *
      * @param vals 链表数值
      * @return 组装链表
      */
     public ListNode builderListNode(int... vals) {
-
-        if (vals.length > 0) {
-            ListNode listNode = new ListNode(vals[0]);
-
+        int len = vals.length;
+        if (len > 0) {
             int length = vals.length - 1;
+
+            ListNode listNode = new ListNode(vals[length]);
 
             int[] nextVals = new int[length];
 
-            System.arraycopy(vals, 1, nextVals, 0, length);
+            System.arraycopy(vals, 0, nextVals, 0, length);
 
             listNode.next = builderListNode(nextVals);
 

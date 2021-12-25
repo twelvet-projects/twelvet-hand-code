@@ -18,4 +18,11 @@ public class ListNode {
         //把接收的参数赋值给当前类的val变量
         this.val = val;
     }
+
+    //构造方法 ：构造方法和类名相同
+    public ListNode(int val, ListNode next) {
+        //把接收的参数赋值给当前类的val变量
+        this.val = val;
+        this.next = next;
+    }
 }
