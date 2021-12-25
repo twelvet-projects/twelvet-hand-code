@@ -1,7 +1,6 @@
 package com.twelvet.hand.problems;
 
 import com.twelvet.hand.problems.common.ListNode;
-import com.twelvet.hand.problems.utils.$;
 import org.junit.Test;
 
 /**
@@ -23,19 +22,9 @@ public class 两数相加 {
 
     @Test
     public void start() {
-        ListNode l1 = new ListNode(2);
+        ListNode l1 = builderListNode(2, 4, 3);
 
-        ListNode l11 = new ListNode(4);
-        l1.next = l11;
-        ListNode l12 = new ListNode(3);
-        l11.next = l12;
-
-        ListNode l2 = new ListNode(5);
-
-        ListNode l21 = new ListNode(6);
-        l2.next = l21;
-        ListNode l22 = new ListNode(4);
-        l21.next = l22;
+        ListNode l2 = builderListNode(5, 6, 4);
 
         ListNode listNode = addTwoNumbers(l1, l2);
 
@@ -91,6 +80,31 @@ public class 两数相加 {
         if (next != null) {
             fmt(next);
         }
+    }
+
+    /**
+     * 组装链表
+     *
+     * @param vals 链表数值
+     * @return 组装链表
+     */
+    public ListNode builderListNode(int... vals) {
+
+        if (vals.length > 0) {
+            ListNode listNode = new ListNode(vals[0]);
+
+            int length = vals.length - 1;
+
+            int[] nextVals = new int[length];
+
+            System.arraycopy(vals, 1, nextVals, 0, length);
+
+            listNode.next = builderListNode(nextVals);
+
+            return listNode;
+        }
+
+        return null;
     }
 
 }
