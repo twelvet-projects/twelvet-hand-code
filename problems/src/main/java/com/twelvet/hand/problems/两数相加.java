@@ -17,7 +17,7 @@ import org.junit.Test;
 public class 两数相加 {
 
     @Test
-    public void start() {
+    public void solution () {
         ListNode l1 = builderListNode(2, 4, 3);
 
         ListNode l2 = builderListNode(5, 6, 4);

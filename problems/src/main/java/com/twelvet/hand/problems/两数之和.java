@@ -17,7 +17,7 @@ import org.junit.Test;
 public class 两数之和 {
 
     @Test
-    public void start() {
+    public void solution() {
         int[] nums = {1,2,2,9,5,6};
         int[] ints = twoSum(nums, 10);
 
