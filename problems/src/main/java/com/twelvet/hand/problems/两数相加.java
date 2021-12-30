@@ -25,6 +25,7 @@ public class 两数相加 {
         ListNode listNode = addTwoNumbers(l1, l2);
 
         fmt(listNode);
+        System.out.println();
     }
 
 
