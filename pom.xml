@@ -12,6 +12,7 @@
         <module>ioc</module>
         <module>problems</module>
         <module>design</module>
+        <module>utils</module>
     </modules>
 
     <name>twelvet</name>
@@ -39,6 +40,13 @@
     </properties>
 
     <dependencies>
+
+        <!--工具合集 -->
+        <dependency>
+            <groupId>com.twelvet.hand</groupId>
+            <artifactId>utils</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>

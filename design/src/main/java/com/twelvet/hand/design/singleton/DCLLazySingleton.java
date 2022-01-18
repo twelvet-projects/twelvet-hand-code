@@ -1,5 +1,7 @@
 package com.twelvet.hand.design.singleton;
 
+import com.twelvet.hand.utils.$;
+
 /**
  * @author twelvet
  * <p>
@@ -14,7 +16,7 @@ public class DCLLazySingleton {
      * 私有化构造器
      */
     private DCLLazySingleton() {
-
+        System.out.println(Thread.currentThread().getName());
     }
 
     /**
@@ -44,7 +46,9 @@ public class DCLLazySingleton {
 
 
     public static void main(String[] args) {
-        System.out.println(DCLLazySingleton.getInstance() == DCLLazySingleton.getInstance());
+        for (int i = 0; i < 10; i++) {
+            $.threadPoolExecutor.execute(() -> getInstance());
+        }
     }
 
 }

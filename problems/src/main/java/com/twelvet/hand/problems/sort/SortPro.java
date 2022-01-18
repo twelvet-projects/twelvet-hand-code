@@ -1,6 +1,6 @@
 package com.twelvet.hand.problems.sort;
 
-import com.twelvet.hand.problems.utils.$;
+import com.twelvet.hand.utils.$;
 import org.junit.Test;
 
 /**

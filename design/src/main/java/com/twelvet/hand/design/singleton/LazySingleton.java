@@ -1,5 +1,7 @@
 package com.twelvet.hand.design.singleton;
 
+import com.twelvet.hand.utils.$;
+
 /**
  * @author twelvet
  * <p>
@@ -16,6 +18,7 @@ public class LazySingleton {
      * private 避免类在外部被实例化
      */
     private LazySingleton() {
+        System.out.println(Thread.currentThread().getName());
     }
 
     public static synchronized LazySingleton getInstance() {
@@ -27,8 +30,9 @@ public class LazySingleton {
     }
 
     public static void main(String[] args) {
-        // 需要的时候才会实例化
-        System.out.println(getInstance() == getInstance());
+        for (int i = 0; i < 10; i++) {
+            $.threadPoolExecutor.execute(() -> getInstance());
+        }
     }
 
 }
