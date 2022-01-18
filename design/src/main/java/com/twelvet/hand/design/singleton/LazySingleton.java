@@ -12,11 +12,14 @@ public class LazySingleton {
      */
     private static volatile LazySingleton INSTANCE = null;
 
+    /**
+     * private 避免类在外部被实例化
+     */
     private LazySingleton() {
-    }    //private 避免类在外部被实例化
+    }
 
     public static synchronized LazySingleton getInstance() {
-        //getInstance 方法前加同步
+        // getInstance 方法前加同步
         if (INSTANCE == null) {
             INSTANCE = new LazySingleton();
         }
