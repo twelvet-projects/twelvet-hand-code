@@ -12,7 +12,7 @@ import org.junit.Test;
  * @WebSite www.twelvet.cn
  * @Description: 汽车消费者
  */
-public class Consumer {
+public class ConsumerTest {
 
     /**
      * 简单工厂模式
