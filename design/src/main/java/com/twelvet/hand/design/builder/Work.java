@@ -9,7 +9,7 @@ import com.twelvet.hand.design.builder.pojo.Product;
  */
 public class Work extends Builder {
 
-    private Product product;
+    private final Product product;
 
     public Work() {
         product = new Product();
