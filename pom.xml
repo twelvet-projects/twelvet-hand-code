@@ -13,6 +13,7 @@
         <module>problems</module>
         <module>design</module>
         <module>utils</module>
+        <module>jvm</module>
     </modules>
 
     <name>twelvet</name>

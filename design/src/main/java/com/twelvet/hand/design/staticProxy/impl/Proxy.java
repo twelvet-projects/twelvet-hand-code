@@ -16,7 +16,7 @@ public class Proxy implements Rent {
     /**
      * 房东
      */
-    private Landlord landlord;
+    private final Landlord landlord;
 
     public Proxy(Landlord landlord) {
         this.landlord = landlord;
