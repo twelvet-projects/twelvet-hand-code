@@ -5,13 +5,14 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
-class ArrayQueueRun {
+class CircleArrayQueueRun {
 
     private final static Logger log = LoggerFactory.getLogger(ArrayQueue.class);
 
     public static void main(String[] args) {
 
-        ArrayQueue queue = new ArrayQueue(3);
+        // 有效输入数据最大为2
+        CircleArrayQueue queue = new CircleArrayQueue(3);
 
         // 接受用户输入
         char key;
@@ -67,11 +68,11 @@ class ArrayQueueRun {
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 数组队列
+ * @Description: 环形队列
  */
-public class ArrayQueue {
+public class CircleArrayQueue {
 
-    private final static Logger log = LoggerFactory.getLogger(ArrayQueue.class);
+    private final static Logger log = LoggerFactory.getLogger(CircleArrayQueue.class);
 
     /**
      * 数组最大容量
@@ -80,11 +81,13 @@ public class ArrayQueue {
 
     /**
      * 队列头
+     * front指向队列的第一个元素，也就是说arr[front]就是队列的第一个元素
      */
     private int front;
 
     /**
      * 队列尾
+     * rear指向队列最后一个元素的后一个位置，因为希望空出一个空间作为约定
      */
     private int rear;
 
@@ -93,13 +96,9 @@ public class ArrayQueue {
      */
     private final int[] arr;
 
-    public ArrayQueue(int maxSize) {
+    public CircleArrayQueue(int maxSize) {
         this.maxSize = maxSize;
         arr = new int[maxSize];
-        // 指向队列头部,分析出front是指向队列头的前一个位置
-        front = -1;
-        // 指向队列尾，指向队列尾部的数据（）既就是队列最后一个数据
-        rear = -1;
     }
 
     /**
@@ -108,7 +107,7 @@ public class ArrayQueue {
      * @return boolean
      */
     public boolean isFull() {
-        return rear == maxSize - 1;
+        return (rear + 1) % maxSize == front;
     }
 
     /**
@@ -130,8 +129,8 @@ public class ArrayQueue {
             log.info("队列满，不能继续添加数据");
             return;
         }
-        rear++;
         arr[rear] = n;
+        rear = (rear + 1) % maxSize;
         log.info("成功添加进入队列");
     }
 
@@ -144,8 +143,14 @@ public class ArrayQueue {
         if (isEmpty()) {
             throw new RuntimeException("队列空，不能获取数据");
         }
-        front++;
-        return arr[front];
+
+        // 这里需要分析出front是指向队列的第一个元素
+        // 1.先把front对应的值保留到一个零时变量
+        // 2.将front后移,考虑取模
+        // 3.将零时保存的变量返回
+        int value = arr[front];
+        front = (front + 1) % maxSize;
+        return value;
     }
 
     /**
@@ -158,10 +163,20 @@ public class ArrayQueue {
             return;
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            log.info("arr[{}] = {}\n", i, arr[i]);
+        // 从front开始遍历，遍历多少个元素
+        for (int i = front; i < front + size(); i++) {
+            log.info("arr[{}] = {}\n", i % maxSize, arr[i % maxSize]);
         }
 
+    }
+
+    /**
+     * 求出当前队列有效数据的个数
+     *
+     * @return int
+     */
+    public int size() {
+        return (rear + maxSize - front) % maxSize;
     }
 
     /**
@@ -174,7 +189,7 @@ public class ArrayQueue {
         if (isEmpty()) {
             throw new RuntimeException("队列空的，没有数据");
         }
-        return arr[front + 1];
+        return arr[front];
     }
 
 }
