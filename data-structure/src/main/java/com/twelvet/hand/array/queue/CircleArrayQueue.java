@@ -11,7 +11,7 @@ class CircleArrayQueueRun {
 
     public static void main(String[] args) {
 
-        // 有效输入数据最大为2
+        // 有效输入数据最大为2,最大值在实现会加一以此补弥补约定的保留最后一位
         CircleArrayQueue queue = new CircleArrayQueue(3);
 
         // 接受用户输入
@@ -97,6 +97,8 @@ public class CircleArrayQueue {
     private final int[] arr;
 
     public CircleArrayQueue(int maxSize) {
+        // 增加一，约定保留一导致的最大值最后一个无法添加
+        maxSize++;
         this.maxSize = maxSize;
         arr = new int[maxSize];
     }
