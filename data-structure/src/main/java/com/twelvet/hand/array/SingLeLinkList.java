@@ -3,6 +3,9 @@ package com.twelvet.hand.array;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
@@ -95,10 +98,10 @@ class HeroNode {
 
     public HeroNode next;
 
-    public HeroNode(int hNo, String hName, String hNikename) {
+    public HeroNode(int hNo, String hName, String hNikeName) {
         this.no = hNo;
         this.name = hName;
-        this.nickname = hNikename;
+        this.nickname = hNikeName;
     }
 
     @Override
