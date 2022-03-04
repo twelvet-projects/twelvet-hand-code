@@ -3,9 +3,6 @@ package com.twelvet.hand.array;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
@@ -21,10 +18,19 @@ class SingLeLinkedListRun {
 
         // 创建链表
         SingLeLinkList singLeLinkList = new SingLeLinkList();
-        singLeLinkList.add(heroNodeLinChong);
+        /*singLeLinkList.add(heroNodeLinChong);
         singLeLinkList.add(heroNodeWuYon);
         singLeLinkList.add(heroNodeLuJunYi);
-        singLeLinkList.add(heroNodeSonJiang);
+        singLeLinkList.add(heroNodeSonJiang);*/
+
+        // 按顺序插入
+        singLeLinkList.addOrder(heroNodeWuYon);
+        singLeLinkList.addOrder(heroNodeLinChong);
+        singLeLinkList.addOrder(heroNodeLuJunYi);
+        singLeLinkList.addOrder(heroNodeSonJiang);
+
+        // 插入失败，因为已经存在
+        singLeLinkList.addOrder(heroNodeSonJiang);
 
         singLeLinkList.list();
 
@@ -60,6 +66,44 @@ public class SingLeLinkList {
         // 当退出while循环时，temp就指向了链表的最后
         // 将最后这个接地那的next，指向新的节点
         temp.next = heroNode;
+    }
+
+    /**
+     * 第二种方式在天津英雄时，根据排名将英雄插入到指定位置
+     * 如果有这个排名，则天津失败，并给出提示
+     */
+    public void addOrder(HeroNode heroNode) {
+
+        // 因为头节点不能动，因此我们任然通过一个辅助指针（变量）
+        // 因为单链表，找的temp是位于添加位置的前一个节点，否则插入不了
+        HeroNode temp = head;
+        // flag标志添加的编号是否存在，默认为false
+        boolean flag = false;
+        while (true) {
+            if (temp.next == null) {
+                break;
+            }
+            if (temp.next.no > heroNode.no) {
+                // 位置找到，就在temp的后面char
+                break;
+            } else if (temp.next.no == heroNode.no) {
+                // 说明希望添加的heroNode的编号已然存在
+                flag = true;
+                break;
+            }
+            // 后移，遍历当前链表
+            temp = temp.next;
+        }
+
+        // 不能移动，说明编号存在
+        if (flag) {
+            log.error("准备插入的英雄编号：{}已经存在了，不能加入\n", heroNode.no);
+        } else {
+            // 插入到链表中，temp的后面
+            heroNode.next = temp.next;
+            temp.next = heroNode;
+        }
+
     }
 
     /**

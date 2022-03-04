@@ -1,6 +1,6 @@
 package com.twelvet.hand.design.singleton;
 
-import com.sun.org.apache.bcel.internal.classfile.InnerClass;
+
 
 /**
  * 枚举单例
