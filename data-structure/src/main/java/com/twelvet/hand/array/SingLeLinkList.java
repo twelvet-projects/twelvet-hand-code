@@ -41,6 +41,7 @@ class SingLeLinkedListRun {
         singLeLinkList.update(newHeroNode);
 
         singLeLinkList.list();
+
     }
 
 }
