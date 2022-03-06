@@ -34,6 +34,13 @@ class SingLeLinkedListRun {
 
         singLeLinkList.list();
 
+        System.out.println("修改后的链表情况");
+
+        // 测试修改节点的代码
+        HeroNode newHeroNode = new HeroNode(2, "小卢", "玉麒麟");
+        singLeLinkList.update(newHeroNode);
+
+        singLeLinkList.list();
     }
 
 }
@@ -104,6 +111,44 @@ public class SingLeLinkList {
             temp.next = heroNode;
         }
 
+    }
+
+    /**
+     * 修改节点的信息，根据no标号来修改，即no编号不能改
+     *
+     * @param newHeroNode HeroNode
+     */
+    public void update(HeroNode newHeroNode) {
+
+        if (head.next == null) {
+            log.error("链表为空");
+            return;
+        }
+        // 找到需要修改的接地那，根据no标号
+        // 定义一个辅助变量
+        HeroNode temp = head.next;
+        // 表示是否知道该节点
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                // 到链表的尾部
+                break;
+            }
+            if (temp.no == newHeroNode.no) {
+                // 找到
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+
+        // 根据flag判断是否找到要修改的节点
+        if(flag){
+            temp.name = newHeroNode.name;
+            temp.nickname = newHeroNode.nickname;
+        }else{
+            log.error("没有找到编号为{}的节点，不能被修改\n", newHeroNode.no);
+        }
     }
 
     /**
