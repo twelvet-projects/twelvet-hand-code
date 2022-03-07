@@ -10,9 +10,11 @@ import org.slf4j.LoggerFactory;
  */
 class SingLeLinkedListRun {
 
+    private static final Logger log = LoggerFactory.getLogger(SingLeLinkedListRun.class);
+
     public static void main(String[] args) {
         HeroNode heroNodeSonJiang = new HeroNode(1, "松江", "及时雨");
-        HeroNode heroNodeLuJunYi = new HeroNode(2, "松江", "玉麒麟");
+        HeroNode heroNodeLuJunYi = new HeroNode(2, "卢俊义", "玉麒麟");
         HeroNode heroNodeWuYon = new HeroNode(3, "吴用", "智多星");
         HeroNode heroNodeLinChong = new HeroNode(4, "林冲", "豹子头");
 
@@ -34,7 +36,7 @@ class SingLeLinkedListRun {
 
         singLeLinkList.list();
 
-        System.out.println("修改后的链表情况");
+        log.info("修改后的链表情况");
 
         // 测试修改节点的代码
         HeroNode newHeroNode = new HeroNode(2, "小卢", "玉麒麟");
@@ -144,10 +146,10 @@ public class SingLeLinkList {
         }
 
         // 根据flag判断是否找到要修改的节点
-        if(flag){
+        if (flag) {
             temp.name = newHeroNode.name;
             temp.nickname = newHeroNode.nickname;
-        }else{
+        } else {
             log.error("没有找到编号为{}的节点，不能被修改\n", newHeroNode.no);
         }
     }
