@@ -44,6 +44,10 @@ class SingLeLinkedListRun {
 
         singLeLinkList.list();
 
+        // 删除一个节点
+        singLeLinkList.delete(1);
+        log.info("删除节点后");
+        singLeLinkList.list();
     }
 
 }
@@ -151,6 +155,37 @@ public class SingLeLinkList {
             temp.nickname = newHeroNode.nickname;
         } else {
             log.error("没有找到编号为{}的节点，不能被修改\n", newHeroNode.no);
+        }
+    }
+
+    /**
+     * 删除节点
+     * head不能动，因此我们需要一个temp辅助节点找到待删除节点前一个节点
+     * 说明我们在比较时，是temp.next.no和需要删除的节点的no比较
+     */
+    public void delete(int no){
+        HeroNode temp = head;
+        // 标记是否找到待删除节点
+        boolean flag = false;
+        while (true){
+            if(temp.next == null) {
+                // 已经找到脸部的最后
+                break;
+            }
+            if(temp.next.no == no){
+                // 找到的待删除节点的前一个节点temp
+                flag = true;
+                break;
+            }
+            // temp 后移，遍历
+            temp = temp.next;
+        }
+        // 判断flag
+        if(flag){
+            // 可以删除
+            temp.next = temp.next.next;
+        }else {
+            log.error("要删除的{}节点不存在", no);
         }
     }
 
