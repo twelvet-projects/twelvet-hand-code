@@ -163,16 +163,16 @@ public class SingLeLinkList {
      * head不能动，因此我们需要一个temp辅助节点找到待删除节点前一个节点
      * 说明我们在比较时，是temp.next.no和需要删除的节点的no比较
      */
-    public void delete(int no){
+    public void delete(int no) {
         HeroNode temp = head;
         // 标记是否找到待删除节点
         boolean flag = false;
-        while (true){
-            if(temp.next == null) {
+        while (true) {
+            if (temp.next == null) {
                 // 已经找到脸部的最后
                 break;
             }
-            if(temp.next.no == no){
+            if (temp.next.no == no) {
                 // 找到的待删除节点的前一个节点temp
                 flag = true;
                 break;
@@ -181,10 +181,10 @@ public class SingLeLinkList {
             temp = temp.next;
         }
         // 判断flag
-        if(flag){
+        if (flag) {
             // 可以删除
             temp.next = temp.next.next;
-        }else {
+        } else {
             log.error("要删除的{}节点不存在", no);
         }
     }
