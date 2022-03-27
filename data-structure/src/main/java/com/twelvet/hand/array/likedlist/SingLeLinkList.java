@@ -1,7 +1,9 @@
-package com.twelvet.hand.array;
+package com.twelvet.hand.array.likedlist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Stack;
 
 /**
  * @author twelvet
@@ -36,7 +38,7 @@ class SingLeLinkedListRun {
 
         singLeLinkList.list();
 
-        log.info("修改后的链表情况");
+        log.info("修改后的链表情况--------------------------------");
 
         // 测试修改节点的代码
         HeroNode newHeroNode = new HeroNode(2, "小卢", "玉麒麟");
@@ -46,13 +48,76 @@ class SingLeLinkedListRun {
 
         // 删除一个节点
         singLeLinkList.delete(1);
-        log.info("删除节点后");
+        log.info("删除节点后------------------------------------");
         singLeLinkList.list();
 
-        log.info("链表有效个数: {}", getLength(singLeLinkList.getHead()));
+        log.info("链表有效个数: {}----------------------------", getLength(singLeLinkList.getHead()));
 
         HeroNode lastIndexNode = findLastIndexNode(singLeLinkList.getHead(), 1);
-        log.info("寻找到的节点为：{}", lastIndexNode);
+        log.info("寻找到的节点为：{}----------------------------", lastIndexNode);
+
+        // 反转链表
+        log.info("原来链表的情况-------------------------------");
+        singLeLinkList.list();
+        log.info("反转链表------------------");
+        reversedList(singLeLinkList.getHead());
+        singLeLinkList.list();
+
+        log.info("逆序打印链表---------------------------");
+        reversePrint(singLeLinkList.getHead());
+    }
+
+    /**
+     * 使用Stack先进先出特点，逆序打印链表
+     *
+     * @param head HeroNode
+     */
+    public static void reversePrint(HeroNode head) {
+        if (head.next == null) {
+            return;
+        }
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode cur = head.next;
+        // 将链表所有节点压入栈
+        while (cur != null) {
+            stack.push(cur);
+            // 后移压入下一个
+            cur = cur.next;
+        }
+        while (!stack.isEmpty()) {
+            log.info("打印结果：{}", stack.pop());
+        }
+    }
+
+    /**
+     * 反转单链表
+     *
+     * @param head HeroNode
+     */
+    public static void reversedList(HeroNode head) {
+        // 如果当前链表为空，或者只有一个节点，无需反转，直接返回
+        if (head.next == null || head.next.next == null) {
+            return;
+        }
+
+        // 定义一个辅助的指针，帮助我们遍历原来的链表
+        HeroNode cur = head.next;
+        // 指向当前节点的下一个节点
+        HeroNode next = null;
+        HeroNode reverseHead = new HeroNode(0, "", "");
+        // 遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reverseHead的最前端
+        while (cur != null) {
+            // 先暂时保存当前节点的下一个节点，因为后面需要使用
+            next = cur.next;
+            // 将cur的下一个节点指向新的链表的最前端
+            cur.next = reverseHead.next;
+            reverseHead.next = cur;
+            // 让cur后移
+            cur = next;
+        }
+        // 将head.next 指向reverseHead.next，实现链表的反转
+        head.next = reverseHead.next;
+
     }
 
     /**
