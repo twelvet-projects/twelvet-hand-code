@@ -38,7 +38,7 @@ class SingLeLinkedListRun {
 
         singLeLinkList.list();
 
-        log.info("修改后的链表情况--------------------------------");
+        log.warn("修改后的链表情况--------------------------------");
 
         // 测试修改节点的代码
         HeroNode newHeroNode = new HeroNode(2, "小卢", "玉麒麟");
@@ -48,22 +48,22 @@ class SingLeLinkedListRun {
 
         // 删除一个节点
         singLeLinkList.delete(1);
-        log.info("删除节点后------------------------------------");
+        log.warn("删除节点后------------------------------------");
         singLeLinkList.list();
 
-        log.info("链表有效个数: {}----------------------------", getLength(singLeLinkList.getHead()));
+        log.warn("链表有效个数: {}----------------------------", getLength(singLeLinkList.getHead()));
 
         HeroNode lastIndexNode = findLastIndexNode(singLeLinkList.getHead(), 1);
-        log.info("寻找到的节点为：{}----------------------------", lastIndexNode);
+        log.warn("寻找到的节点为：{}----------------------------", lastIndexNode);
 
         // 反转链表
-        log.info("原来链表的情况-------------------------------");
+        log.warn("原来链表的情况-------------------------------");
         singLeLinkList.list();
-        log.info("反转链表------------------");
+        log.warn("反转链表------------------");
         reversedList(singLeLinkList.getHead());
         singLeLinkList.list();
 
-        log.info("逆序打印链表---------------------------");
+        log.warn("逆序打印链表---------------------------");
         reversePrint(singLeLinkList.getHead());
     }
 
