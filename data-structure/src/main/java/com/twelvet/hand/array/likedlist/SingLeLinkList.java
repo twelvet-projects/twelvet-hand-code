@@ -186,7 +186,7 @@ public class SingLeLinkList {
      * 添加节点到单项链表
      * 当不考虑编号顺序时
      * 找到当前链表的最后节点
-     * 将最后的这个节点的next，指向新的节点     *
+     * 将最后的这个节点的next，指向新的节点
      *
      * @param heroNode HeroNode
      */
