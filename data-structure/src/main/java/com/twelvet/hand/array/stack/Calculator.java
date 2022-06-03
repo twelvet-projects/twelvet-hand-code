@@ -13,7 +13,7 @@ public class Calculator {
     private static final Logger log = LoggerFactory.getLogger(Calculator.class);
 
     public static void main(String[] args) {
-        String expression = "3+2*6-2";
+        String expression = "3+2*6-100";
 
         // 创建两个栈，数栈，
         ArrayStackCalculator stackNum = new ArrayStackCalculator(10);
@@ -28,6 +28,7 @@ public class Calculator {
         int res = 0;
         // 将每次扫描得到的char保存
         char ch = ' ';
+        String keepNum = "";
         do {
             // 得到字符串中的字符
             ch = expression.substring(index, index + 1).charAt(0);
@@ -60,23 +61,16 @@ public class Calculator {
                 // 如果是数栈，则直接入数栈
                 //stackNum.push(ch - 48);
                 // 在处理多位数时，不能发现是一个数就立即入栈，因为可能是多位数
-
+                keepNum += ch;
                 // 如果ch已经是expression最后一位，就直接入栈
                 if (index == expression.length() - 1) {
-                    stackNum.push(ch);
+                    stackNum.push(Integer.parseInt(keepNum));
                 } else {
-                    String resNum = String.valueOf(ch);
-                    int addIndex = 0;
-                    while (true) {
-                        addIndex++;
-                        char c = expression.substring(index + addIndex, index + addIndex + 1).charAt(0);
-                        if (!stackOper.isOper(c)) {
-                            resNum += c;
-                        } else {
-                            break;
-                        }
+                    char c = expression.substring(index + 1, index + 2).charAt(0);
+                    if (stackOper.isOper(c)) {
+                        stackNum.push(Integer.parseInt(keepNum));
+                        keepNum = "";
                     }
-                    stackNum.push(Integer.parseInt(resNum));
                 }
             }
             // 让index + 1，并判断是否扫描到最后
@@ -217,7 +211,7 @@ class ArrayStackCalculator {
      * @param val val
      * @return true||false
      */
-    public boolean isOper(char val) {
+    public boolean isOper(int val) {
         return val == '+' || val == '-' || val == '*' || val == '/';
     }
 
