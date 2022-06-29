@@ -1,5 +1,7 @@
 package com.twelvet.hand.jvm.juc;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -13,6 +15,8 @@ public class AQS {
         ReentrantLock reentrantLock = new ReentrantLock();
         boolean b = reentrantLock.tryLock();
         reentrantLock.unlock();
+        Map<String, Object> stringObjectHashMap = new HashMap<>();
+        stringObjectHashMap.put("", "");
     }
 
 
