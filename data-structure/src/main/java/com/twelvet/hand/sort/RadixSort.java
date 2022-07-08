@@ -29,7 +29,7 @@ public class RadixSort {
             }
         }
 
-        int maxLength = (max + "").length();
+        int maxLength = String.valueOf(max).length();
 
         // 为了记录每个桶中，实际放了多少数据，我们定义一个一维数组记录每个桶的每次放入的数据个数
         // bucketElementCounts[0]，记录的就是bucket[0]桶的放入数据个数
