@@ -2,6 +2,9 @@ package com.twelvet.hand.design.factory;
 
 import com.twelvet.hand.design.factory.abstractFactory.impl.HuaWeiProductFactoryImpl;
 import com.twelvet.hand.design.factory.abstractFactory.impl.XiaoMiProductFactoryImpl;
+import com.twelvet.hand.design.factory.factoryMethod.Product;
+import com.twelvet.hand.design.factory.factoryMethod.impl.FactoryAImpl;
+import com.twelvet.hand.design.factory.factoryMethod.impl.FactoryBImpl;
 import com.twelvet.hand.design.factory.simple.Car;
 import com.twelvet.hand.design.factory.simple.impl.TesLaCarFactoryImpl;
 import com.twelvet.hand.design.factory.simple.impl.WuLinCarFactoryImpl;
@@ -39,6 +42,19 @@ public class ConsumerTest {
         // 生成华为产品
         HuaWeiProductFactoryImpl huaWeiProductFactory = new HuaWeiProductFactoryImpl();
         huaWeiProductFactory.phoneFactory().sendSms();
+
+    }
+
+    /**
+     * 工厂方法
+     */
+    @Test
+    public void factoryMethod() {
+        FactoryAImpl factoryA = new FactoryAImpl();
+        factoryA.make().show();
+
+        FactoryBImpl factoryB = new FactoryBImpl();
+        factoryB.make().show();
 
     }
 
