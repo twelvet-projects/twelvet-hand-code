@@ -1,8 +1,7 @@
 package com.twelvet.hand.design.visitor;
 
-import com.twelvet.hand.design.visitor.impl.NodeA;
+import com.twelvet.hand.design.visitor.impl.*;
 import com.twelvet.hand.design.visitor.impl.NodeB;
-import com.twelvet.hand.design.visitor.impl.VisitorA;
 import com.twelvet.hand.design.visitor.impl.VisitorB;
 
 /**
