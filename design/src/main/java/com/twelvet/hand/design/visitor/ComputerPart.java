@@ -6,7 +6,7 @@ public abstract class ComputerPart {
 
    protected String name;
 
-   protected double price;
+   public double price;
 
    public ComputerPart(String name, double price) {
        this.name = name;
