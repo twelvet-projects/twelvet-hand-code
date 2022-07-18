@@ -32,6 +32,34 @@ public class BinaryTreeDemo {
 
         System.out.println("后续遍历");
         binaryTree.postOrder();
+
+        // 前序搜索
+        System.out.println("前序搜索");
+        HeroNode perNode = binaryTree.perOrderSearch(5);
+        if (perNode != null) {
+            System.out.printf("找到了，信息为 no = %d name = %s\n", perNode.getNo(), perNode.getName());
+        } else {
+            System.out.printf("没有找到 no = %d\n", 5);
+        }
+
+        // 中序搜索
+        System.out.println("中序搜索");
+        HeroNode infixNode = binaryTree.infixOrderSearch(5);
+        if (infixNode != null) {
+            System.out.printf("找到了，信息为 no = %d name = %s\n", infixNode.getNo(), infixNode.getName());
+        } else {
+            System.out.printf("没有找到 no = %d\n", 5);
+        }
+
+        // 后续搜索
+        System.out.println("后续搜索");
+        HeroNode postNode = binaryTree.postOrderSearch(5);
+        if (postNode != null) {
+            System.out.printf("找到了，信息为 no = %d name = %s\n", postNode.getNo(), postNode.getName());
+        } else {
+            System.out.printf("没有找到 no = %d\n", 5);
+        }
+
     }
 }
 
