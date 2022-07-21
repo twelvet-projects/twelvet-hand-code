@@ -9,8 +9,154 @@ public class ThreadedBinaryTreeDemo {
 
     public static void main(String[] args) {
 
+        HeroNode root = new HeroNode(1, "tom");
+        HeroNode node2 = new HeroNode(3, "jack");
+        HeroNode node3 = new HeroNode(6, "smith");
+        HeroNode node4 = new HeroNode(8, "mary");
+        HeroNode node5 = new HeroNode(10, "king");
+        HeroNode node6 = new HeroNode(14, "dim");
+
+        // 二叉树，后面我们要递归，现在简单处理使用手动创建
+        root.setLeft(node2);
+        root.setRight(node3);
+        node2.setLeft(node4);
+        node2.setRight(node5);
+
+        node3.setLeft(node6);
+
+        ThreadedBinaryTree threadedBinaryTree = new ThreadedBinaryTree();
+        threadedBinaryTree.setRoot(root);
+        threadedBinaryTree.threadedNodes();
+
+        HeroNode leftNode = node5.getLeft();
+        HeroNode rightNode = node5.getRight();
+        System.out.println("节点的前驱节点是 = " + leftNode);
+        System.out.println("节点的后续节点是 = " + rightNode);
     }
 
+}
+
+// 定义tree二叉树
+class ThreadedBinaryTree {
+    private HeroNode root;
+
+    // 为了实现线索化，需要创建要给指向当前节点的前驱节点的指针
+    // 在递归进行线索化时，pre总是保留前一个节点
+    private HeroNode pre = null;
+
+    public void setRoot(HeroNode root) {
+        this.root = root;
+    }
+
+    /**
+     * 重载threadedNodes
+     */
+    public void threadedNodes() {
+        this.threadedNodes(root);
+    }
+
+    // 编写二叉树进行中序线索化的方法
+    public void threadedNodes(HeroNode node) {
+        // 如果node == null 不能线索化
+        if (node == null) {
+            return;
+        }
+        // 1. 先线索化左子树
+        threadedNodes(node.getLeft());
+        // 2. 线索化当前节点
+
+        // 处理当前节点的前驱节点
+        if (node.getLeft() == null) {
+            // 让当前节点的左指针指向前驱节点
+            node.setLeft(pre);
+            // 修改当前节点的左指针的类型，指向前驱节点
+            node.setLeftType(1);
+        }
+
+        // 处理后续节点
+        if (pre != null && pre.getRight() == null) {
+            // 让前驱节点的右指针指向当前节点
+            pre.setRight(node);
+            // 修改前驱节点的右指针类型
+            pre.setLeftType(1);
+        }
+
+        // !!! 每处理一个节点后，让当前节点是下一个节点的前驱节点
+        pre = node;
+
+        // 3. 在线索化
+        threadedNodes(node.getRight());
+    }
+
+    /**
+     * 删除节点
+     */
+    public void delNode(int no) {
+        if (root != null) {
+            // 如果只有一个root节点，这里立即判断root是不是就是要删除的节点
+            if (root.getNo() == no) {
+                root = null;
+            } else {
+                root.delNOde(no);
+            }
+        } else {
+            System.out.println("空树，不能删除");
+        }
+    }
+
+    // 前序遍历
+    public void perOrder() {
+        if (this.root != null) {
+            this.root.perOrder();
+        } else {
+            System.out.println("二叉树为空，无法遍历");
+        }
+    }
+
+    // 中序遍历
+    public void infixOrder() {
+        if (this.root != null) {
+            this.root.infixOrder();
+        } else {
+            System.out.println("二叉树为空，无法遍历");
+        }
+    }
+
+    // 后续遍历
+    public void postOrder() {
+        if (this.root != null) {
+            this.root.postOrder();
+        } else {
+            System.out.println("二叉树为空，无法遍历");
+        }
+    }
+
+    // 前序遍历查找
+    public HeroNode perOrderSearch(int no) {
+        if (root != null) {
+            return root.perOrderSearch(no);
+        } else {
+            return null;
+        }
+    }
+
+    // 中序遍历查找
+    public HeroNode infixOrderSearch(int no) {
+        if (root != null) {
+            return root.infixOrderSearch(no);
+        } else {
+            return null;
+        }
+    }
+
+    // 后序遍历查找
+    public HeroNode postOrderSearch(int no) {
+        if (root != null) {
+            return root.postOrderSearch(no);
+        } else {
+            return null;
+        }
+    }
 }
 
 // 定义ThreadedBinaryTree 实现了线索化功能的二叉树
@@ -248,120 +394,4 @@ class HeroNode {
         return resNode;
     }
 
-}
-
-// 定义tree二叉树
-class BinaryTree {
-    private HeroNode root;
-
-    // 为了实现线索化，需要创建要给指向当前节点的前驱节点的指针
-    // 在递归进行线索化时，pre总是保留前一个节点
-    private HeroNode pre = null;
-
-    public void setRoot(HeroNode root) {
-        this.root = root;
-    }
-
-    // 编写二叉树进行中序线索化的方法
-    public void threadedNOdes(HeroNode node) {
-        // 如果node == null 不能线索化
-        if (node == null) {
-            return;
-        }
-        // 1. 先线索化左子树
-        threadedNOdes(node.getLeft());
-        // 2. 线索化当前节点
-
-        // 处理当前节点的前驱节点
-        if (node.getLeft() == null) {
-            // 让当前节点的左指针指向前驱节点
-            node.setLeft(pre);
-            // 修改当前节点的左指针的类型，指向前驱节点
-            node.setLeftType(1);
-        }
-
-        // 处理后续节点
-        if (pre != null && pre.getRight() == null) {
-            // 让前驱节点的右指针指向当前节点
-            pre.setRight(node);
-            // 修改前驱节点的右指针类型
-            pre.setLeftType(1);
-        }
-
-        // !!! 每处理一个节点后，让当前节点是下一个节点的前驱节点
-        pre = node;
-
-        // 3. 在线索化
-        threadedNOdes(node.getRight());
-    }
-
-    /**
-     * 删除节点
-     */
-    public void delNode(int no) {
-        if (root != null) {
-            // 如果只有一个root节点，这里立即判断root是不是就是要删除的节点
-            if (root.getNo() == no) {
-                root = null;
-            } else {
-                root.delNOde(no);
-            }
-        } else {
-            System.out.println("空树，不能删除");
-        }
-    }
-
-    // 前序遍历
-    public void perOrder() {
-        if (this.root != null) {
-            this.root.perOrder();
-        } else {
-            System.out.println("二叉树为空，无法遍历");
-        }
-    }
-
-    // 中序遍历
-    public void infixOrder() {
-        if (this.root != null) {
-            this.root.infixOrder();
-        } else {
-            System.out.println("二叉树为空，无法遍历");
-        }
-    }
-
-    // 后续遍历
-    public void postOrder() {
-        if (this.root != null) {
-            this.root.postOrder();
-        } else {
-            System.out.println("二叉树为空，无法遍历");
-        }
-    }
-
-    // 前序遍历查找
-    public HeroNode perOrderSearch(int no) {
-        if (root != null) {
-            return root.perOrderSearch(no);
-        } else {
-            return null;
-        }
-    }
-
-    // 中序遍历查找
-    public HeroNode infixOrderSearch(int no) {
-        if (root != null) {
-            return root.infixOrderSearch(no);
-        } else {
-            return null;
-        }
-    }
-
-    // 后序遍历查找
-    public HeroNode postOrderSearch(int no) {
-        if (root != null) {
-            return root.postOrderSearch(no);
-        } else {
-            return null;
-        }
-    }
 }
