@@ -17,7 +17,7 @@ public class HeapSort {
     public static void heapSort(int[] arr) {
         int temp;
         System.out.println("堆排序");
-        // 将无序序列建成一个堆，根据肾虚降序需求选择大顶堆或者小顶堆
+        // 将无序序列建成一个堆，根据升序降序需求选择大顶堆或者小顶堆
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
             adjustHeap(arr, i, arr.length);
         }
