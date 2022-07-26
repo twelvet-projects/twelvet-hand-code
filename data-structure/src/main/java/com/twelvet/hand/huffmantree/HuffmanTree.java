@@ -79,6 +79,11 @@ class Node implements Comparable<Node> {
     int value;
 
     /**
+     * 字符
+     */
+    char c;
+
+    /**
      * 指向左子节点
      */
     Node left;
