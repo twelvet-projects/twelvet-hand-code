@@ -2,6 +2,7 @@ package com.twelvet.hand.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -29,11 +30,11 @@ public class Graph {
     /**
      * 定义数组，记录某个节点是否被访问
      */
-    private boolean[] isVisited;
+    private final boolean[] isVisited;
 
     public static void main(String[] args) {
-        int n = 5;
-        String[] vertexs = {"A", "B", "C", "D", "E"};
+        int n = 8;
+        String[] vertexs = {"1", "2", "3", "4", "5", "6", "7", "8"};
         Graph graph = new Graph(n);
         for (String vertex : vertexs) {
             graph.insertVertex(vertex);
@@ -44,12 +45,20 @@ public class Graph {
         graph.insertEdge(1, 2, 1);
         graph.insertEdge(1, 3, 1);
         graph.insertEdge(1, 4, 1);
+        graph.insertEdge(3, 7, 1);
+        graph.insertEdge(4, 7, 1);
+        graph.insertEdge(2, 5, 1);
+        graph.insertEdge(2, 6, 1);
+        graph.insertEdge(5, 6, 1);
 
         // 显示临界矩阵
         graph.showGraph();
 
-        System.out.println("深度遍历");
-        graph.dfs();
+//        System.out.println("深度遍历");
+//        graph.dfs();
+//        System.out.println();
+        System.out.println("广度优先");
+        graph.bfs();
     }
 
     public Graph(int n) {
@@ -112,6 +121,48 @@ public class Graph {
         for (int i = 0; i < getNumOfVertex(); i++) {
             if (!isVisited[i]) {
                 dfs(isVisited, i);
+            }
+        }
+    }
+
+    // 对一个节点进行广度优先遍历的方法
+    private void bfs(boolean[] isVisited, int i) {
+        // 表示队列的头节点对应下标
+        int u;
+        // 临界节点w
+        int w;
+        // 队列，节点访问的顺序
+        LinkedList<Integer> queue = new LinkedList<>();
+        // 访问节点，输出节点信息
+        System.out.println(getValueByIndex(i) + "=>");
+        // 标记为已访问
+        isVisited[i] = true;
+        // 将节点加入队列
+        queue.addLast(i);
+        while (!queue.isEmpty()) {
+            // 取出队列的头节点下标
+            u = queue.removeFirst();
+            // 得到第一个临界点的下标w
+            w = getFirstNeighbor(u);
+            while (w != -1) {
+                // 是否访问过
+                if (!isVisited[w]) {
+                    System.out.println(getValueByIndex(w) + "=>");
+                    isVisited[w] = true;
+                    // 入队
+                    queue.addLast(w);
+                }
+                // 以u去为前驱点，找到w后面的下一个境界点
+                w = getNextNeighbor(u, w);
+            }
+        }
+    }
+
+    // 遍历所有节点，都进行广度优先搜索
+    public void bfs() {
+        for (int i = 0; i < getNumOfVertex(); i++) {
+            if (!isVisited[i]) {
+                bfs(isVisited, i);
             }
         }
     }
