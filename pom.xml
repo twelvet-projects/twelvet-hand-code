@@ -43,13 +43,6 @@
 
     <dependencies>
 
-        <!--工具合集 -->
-        <dependency>
-            <groupId>com.twelvet.hand</groupId>
-            <artifactId>utils</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>

@@ -12,4 +12,13 @@
     <artifactId>problems</artifactId>
     <description>算法</description>
 
+    <dependencies>
+        <!--工具合集 -->
+        <dependency>
+            <groupId>com.twelvet.hand</groupId>
+            <artifactId>utils</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
 </project>
