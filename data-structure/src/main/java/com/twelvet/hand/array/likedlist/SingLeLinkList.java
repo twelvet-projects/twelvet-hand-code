@@ -207,8 +207,8 @@ public class SingLeLinkList {
     }
 
     /**
-     * 第二种方式在天津英雄时，根据排名将英雄插入到指定位置
-     * 如果有这个排名，则天津失败，并给出提示
+     * 第二种方式在添加英雄时，根据排名将英雄插入到指定位置
+     * 如果有这个排名，则添加失败，并给出提示
      */
     public void addOrder(HeroNode heroNode) {
 
@@ -293,7 +293,7 @@ public class SingLeLinkList {
         boolean flag = false;
         while (true) {
             if (temp.next == null) {
-                // 已经找到脸部的最后
+                // 已经找到尾部的最后
                 break;
             }
             if (temp.next.no == no) {
@@ -301,12 +301,12 @@ public class SingLeLinkList {
                 flag = true;
                 break;
             }
-            // temp 后移，遍历
+            // temp 后移，遍历，只改变temp指针指向，并不会影响head
             temp = temp.next;
         }
         // 判断flag
         if (flag) {
-            // 可以删除
+            // 可以删除,指针指向内容还是head，所以可以改变head
             temp.next = temp.next.next;
         } else {
             log.error("要删除的{}节点不存在", no);
