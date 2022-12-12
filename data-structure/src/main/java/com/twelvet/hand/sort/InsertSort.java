@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、插入排序-依次往前对比即可
+ * @Description: 插入排序-依次往前对比即可
  */
 public class InsertSort {
 
