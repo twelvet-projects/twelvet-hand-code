@@ -88,7 +88,7 @@ class CircleSingleLinkedList {
     }
 
     /**
-     * 根据用户的输入，计算小孩的出拳顺序
+     * 根据用户的输入，计算小孩的出圈顺序
      *
      * @param k  表示从第几个小孩开始
      * @param m 表示数几下
