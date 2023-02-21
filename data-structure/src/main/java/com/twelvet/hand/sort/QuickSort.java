@@ -21,7 +21,7 @@ public class QuickSort {
         // pivot中间值
         int pivot = arr[(left + right) / 2];
         // 临时变量作为交换时使用
-        int temp = 0;
+        int temp;
         // while循环的目的是让比pivot值小放到左边
         while (l < r) {
             // 在pivot的左边一直找，找到大于pivot值，才退出

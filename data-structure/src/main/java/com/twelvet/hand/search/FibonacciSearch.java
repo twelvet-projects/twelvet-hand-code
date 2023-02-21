@@ -48,7 +48,7 @@ public class FibonacciSearch {
         // 存放mid值
         int mid = 0;
         // 获取到斐波那契分割数组值的下标
-        int f[] = fib();
+        int[] f = fib();
         while (high > f[k] - 1) {
             k++;
         }

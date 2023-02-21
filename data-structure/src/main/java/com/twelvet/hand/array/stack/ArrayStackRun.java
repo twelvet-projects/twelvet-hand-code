@@ -28,29 +28,26 @@ public class ArrayStackRun {
             System.out.println("pop：从栈取出数据");
             key = scanner.next();
             switch (key) {
-                case "s":
-                    arrayStack.list();
-                    break;
-                case "push":
+                case "s" -> arrayStack.list();
+                case "push" -> {
                     log.info("输入一个数");
                     int vale = scanner.nextInt();
                     arrayStack.push(vale);
-
-                    break;
-                case "pop":
+                }
+                case "pop" -> {
                     try {
                         int res = arrayStack.pop();
                         log.info("取出的数据是：{}", res);
                     } catch (Exception e) {
                         log.error(e.getMessage());
                     }
-                    break;
-                case "e":
+                }
+                case "e" -> {
                     scanner.close();
                     loop = false;
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
         }
     }
@@ -64,12 +61,12 @@ class ArrayStack {
     /**
      * 栈的大小
      */
-    private int maxSize;
+    private final int maxSize;
 
     /**
      * 数组，数组模拟栈
      */
-    private int[] stack;
+    private final int[] stack;
 
     /**
      * 栈初始化为-1

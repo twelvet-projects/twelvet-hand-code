@@ -11,7 +11,7 @@ import java.util.Stack;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、逆波兰表达式
+ * @Description: 逆波兰表达式
  */
 public class PoLandNotation {
 

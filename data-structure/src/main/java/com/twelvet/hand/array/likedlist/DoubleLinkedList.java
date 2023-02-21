@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 双向列表
+ * @Description: 双向链表
  */
 class DoubleLinkedListRun {
 

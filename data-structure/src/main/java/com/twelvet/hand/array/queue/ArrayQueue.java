@@ -26,37 +26,34 @@ class ArrayQueueRun {
             System.out.println("h(head)：查看队列头的数据");
             key = scanner.next().charAt(0);
             switch (key) {
-                case 's':
-                    queue.showQueue();
-                    break;
-                case 'a':
+                case 's' -> queue.showQueue();
+                case 'a' -> {
                     log.info("输入一个数");
                     int vale = scanner.nextInt();
                     queue.addQueue(vale);
-
-                    break;
-                case 'g':
+                }
+                case 'g' -> {
                     try {
                         int res = queue.getQueue();
                         log.info("取出的数据是：{}", res);
                     } catch (Exception e) {
                         log.error(e.getMessage());
                     }
-                    break;
-                case 'h':
+                }
+                case 'h' -> {
                     try {
                         int res = queue.headQueue();
                         log.info("队列头的数据树：{}", res);
                     } catch (Exception e) {
                         log.error(e.getMessage());
                     }
-                    break;
-                case 'e':
+                }
+                case 'e' -> {
                     scanner.close();
                     loop = false;
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
 
         }
@@ -165,7 +162,7 @@ public class ArrayQueue {
     }
 
     /**
-     * 显示队列的头数据，注意不试取数据
+     * 显示队列的头数据，注意不是取数据
      *
      * @return int
      */

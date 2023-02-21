@@ -22,12 +22,12 @@ public class Calculator {
         // 定义需要的相关变量
         // 用于扫描
         int index = 0;
-        int num1 = 0;
-        int num2 = 0;
-        int oper = 0;
-        int res = 0;
+        int num1;
+        int num2;
+        int oper;
+        int res;
         // 将每次扫描得到的char保存
-        char ch = ' ';
+        char ch;
         String keepNum = "";
         do {
             // 得到字符串中的字符

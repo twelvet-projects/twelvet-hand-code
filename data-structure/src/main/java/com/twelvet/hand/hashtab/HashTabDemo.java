@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、哈希表
+ * @Description: 哈希表
  */
 public class HashTabDemo {
 
@@ -14,7 +14,7 @@ public class HashTabDemo {
         HashTab hashTab = new HashTab(7);
 
         // 写一个简单的菜单
-        String key = "";
+        String key;
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -33,7 +33,6 @@ public class HashTabDemo {
 
                     Emp emp = new Emp(id, name);
                     hashTab.add(emp);
-                    break;
                 case "list":
                     hashTab.list();
                     break;

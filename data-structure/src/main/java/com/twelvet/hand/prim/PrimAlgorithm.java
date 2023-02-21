@@ -72,7 +72,7 @@ class MinTree {
      */
     public void prim(MGraph graph, int v) {
         //visited[] 标记结点(顶点)是否被访问过
-        int visited[] = new int[graph.verxs];
+        int[] visited = new int[graph.verxs];
         //visited[] 默认元素的值都是0, 表示没有访问过
 //		for(int i =0; i <graph.verxs; i++) {
 //			visited[i] = 0;

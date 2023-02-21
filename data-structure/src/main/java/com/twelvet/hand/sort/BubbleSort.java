@@ -18,7 +18,7 @@ public class BubbleSort {
     }
 
     public static void bubbleSort(int[] arr) {
-        int temp = 0;
+        int temp;
         boolean flag = false;
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
@@ -31,7 +31,7 @@ public class BubbleSort {
             }
 
             if (!flag) {
-                // 在一趟排序种，一次交换都没有发生过，退出本次排序加快排序速度
+                // 在一趟排序中，一次交换都没有发生过，退出本次排序加快排序速度
                 break;
             } else {
                 // 重置flag，进行下一次判断
