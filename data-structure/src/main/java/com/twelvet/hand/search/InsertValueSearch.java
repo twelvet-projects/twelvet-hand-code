@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、插值查找(要求数组是有序的)[使用公式递归]
+ * @Description: 插值查找(要求数组是有序的)[使用公式递归]
  */
 public class InsertValueSearch {
 

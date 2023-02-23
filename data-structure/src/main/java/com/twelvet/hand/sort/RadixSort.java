@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、基数排序(从个位数开始排序，一直到最大位数，不够位数前方补零即可)
+ * @Description: 基数排序(从个位数开始排序 ， 一直到最大位数 ， 不够位数全部放0位桶)
  */
 public class RadixSort {
 
@@ -49,6 +49,7 @@ public class RadixSort {
                 int digitOfElement = value / n % 10;
                 // 放入对应的桶中
                 bucket[digitOfElement][bucketElementCounts[digitOfElement]] = value;
+                // 增加记录数组个数
                 bucketElementCounts[digitOfElement]++;
             }
             // 按照这个桶的顺序（一维数组下标依次取出，放入原来数组）
@@ -56,13 +57,11 @@ public class RadixSort {
             // 遍历每一桶，并将桶中是数据，放入到原数组
             for (int k = 0; k < bucketElementCounts.length; k++) {
                 // 如果桶中，有数据，我们才放入到原数组
-                if (bucketElementCounts[k] != 0) {
-                    // 循环该桶第k个桶（第k个一维数组），放入
-                    for (int l = 0; l < bucketElementCounts[k]; l++) {
-                        arr[index++] = bucket[k][l];
-                    }
+                // 循环该桶第k个桶（第k个一维数组），放入
+                for (int l = 0; l < bucketElementCounts[k]; l++) {
+                    arr[index++] = bucket[k][l];
                 }
-                // 使用完成需要归零
+                // 使用完成需要归零，等待后一位数，如十位数遍历
                 bucketElementCounts[k] = 0;
             }
         }

@@ -3,7 +3,7 @@ package com.twelvet.hand.binarysorttree;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、二叉树排序
+ * @Description: 二叉树排序
  */
 public class BinarySortTreeDemo {
 

@@ -64,7 +64,7 @@ public class GreedyAlgorithm {
 
         //定义给maxKey ， 保存在一次遍历过程中，能够覆盖最大未覆盖的地区对应的电台的key
         //如果maxKey 不为null , 则会加入到 selects
-        String maxKey = null;
+        String maxKey;
         while (allAreas.size() != 0) { // 如果allAreas 不为0, 则表示还没有覆盖到所有的地区
             //每进行一次while,需要
             maxKey = null;

@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、希尔排序（分段排序即可）
+ * @Description: 希尔排序（分段排序即可）
  */
 public class ShellSort {
 

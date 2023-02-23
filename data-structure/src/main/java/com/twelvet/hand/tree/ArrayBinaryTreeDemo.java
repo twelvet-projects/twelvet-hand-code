@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、数组二叉树
+ * @Description: 数组二叉树
  */
 public class ArrayBinaryTreeDemo {
 

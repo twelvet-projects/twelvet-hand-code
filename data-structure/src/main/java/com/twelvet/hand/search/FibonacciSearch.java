@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、斐波那契算法（黄金分割法）
+ * @Description: 斐波那契算法（黄金分割法）
  */
 public class FibonacciSearch {
 

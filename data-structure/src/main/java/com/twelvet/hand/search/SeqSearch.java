@@ -3,7 +3,7 @@ package com.twelvet.hand.search;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、线性查找
+ * @Description: 线性查找
  */
 public class SeqSearch {
 

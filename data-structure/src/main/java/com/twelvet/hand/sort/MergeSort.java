@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、归并排序
+ * @Description: 归并排序
  */
 public class MergeSort {
 

@@ -3,7 +3,7 @@ package com.twelvet.hand.recursion;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、迷宫
+ * @Description: 迷宫
  */
 public class MiGong {
 

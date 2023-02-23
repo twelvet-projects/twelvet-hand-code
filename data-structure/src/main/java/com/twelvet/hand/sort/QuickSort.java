@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、快速排序(取出中间值左右各自排序递归即可)
+ * @Description: 快速排序(取出中间值左右各自排序递归即可)
  */
 public class QuickSort {
 

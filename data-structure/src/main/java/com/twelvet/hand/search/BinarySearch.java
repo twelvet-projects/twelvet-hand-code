@@ -3,7 +3,7 @@ package com.twelvet.hand.search;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、二分查找(该数组必须是有序的前提)[切割两个数组，判断在索引还是右索引，进行遍历即可]
+ * @Description: 二分查找(该数组必须是有序的前提)[切割两个数组，判断在索引还是右索引，进行遍历即可]
  */
 public class BinarySearch {
 

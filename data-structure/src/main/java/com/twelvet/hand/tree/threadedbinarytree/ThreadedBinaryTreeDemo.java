@@ -3,7 +3,7 @@ package com.twelvet.hand.tree.threadedbinarytree;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、线索二叉树
+ * @Description: 线索二叉树
  */
 public class ThreadedBinaryTreeDemo {
 
@@ -202,7 +202,7 @@ class HeroNode {
     private HeroNode right;
 
     // 1. 如果leftType == 0 表示指向的是左子树，如果1则表示指向前序节点
-    // 2. 如果rightType == 0 表示指向是子树，如果1表示指向后续
+    // 2. 如果rightType == 0 表示指向是右子树，如果1表示指向后序节点
     private int leftType;
 
     private int rightType;

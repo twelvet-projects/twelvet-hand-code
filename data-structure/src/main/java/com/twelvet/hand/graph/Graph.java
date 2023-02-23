@@ -1,5 +1,8 @@
 package com.twelvet.hand.graph;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -11,6 +14,8 @@ import java.util.List;
  * 图
  */
 public class Graph {
+
+    private static final Logger log = LoggerFactory.getLogger(Graph.class);
 
     /**
      * 储存顶点集合
@@ -40,9 +45,8 @@ public class Graph {
             graph.insertVertex(vertex);
         }
         // 添加边
-        graph.insertEdge(0, 1, 1); // A-B
+        graph.insertEdge(0, 1, 1);
         graph.insertEdge(0, 2, 1);
-        graph.insertEdge(1, 2, 1);
         graph.insertEdge(1, 3, 1);
         graph.insertEdge(1, 4, 1);
         graph.insertEdge(3, 7, 1);
@@ -54,9 +58,9 @@ public class Graph {
         // 显示临界矩阵
         graph.showGraph();
 
-//        System.out.println("深度遍历");
-//        graph.dfs();
-//        System.out.println();
+        /*System.out.println("深度遍历");
+        graph.dfs();*/
+        System.out.println();
         System.out.println("广度优先");
         graph.bfs();
     }
@@ -84,7 +88,7 @@ public class Graph {
         return -1;
     }
 
-    // 根据前一个临界接地那的下标来获取下一个领界节点
+    // 根据前一个临界接地那的下标来获取下一个临界点
     public int getNextNeighbor(int v1, int v2) {
         for (int j = v2 + 1; j < vertexList.size(); j++) {
             if (edges[v1][j] > 0) {
@@ -96,11 +100,11 @@ public class Graph {
 
     /**
      * 深度优先遍历算法
+     * 优先纵向挖掘深入，而不是对一个节点的所有邻界点进行横向访问
      *
-     * @param isVisited
      * @param i
      */
-    private void dfs(boolean[] isVisited, int i) {
+    private void dfs(int i) {
         // 首先我们访问该节点
         System.out.println(getValueByIndex(i) + "->");
         // 将节点设置为已经访问
@@ -108,10 +112,11 @@ public class Graph {
         // 查找节点i的第一个临界接节点w
         int w = getFirstNeighbor(i);
         while (w != -1) {
+            // 当前节点没有被访问将深入访问
             if (!isVisited[w]) {
-                dfs(isVisited, w);
+                dfs(w);
             }
-            // 如果w节点已经被访问过
+            // 重新获取邻节点
             w = getNextNeighbor(i, w);
         }
     }
@@ -120,13 +125,13 @@ public class Graph {
     public void dfs() {
         for (int i = 0; i < getNumOfVertex(); i++) {
             if (!isVisited[i]) {
-                dfs(isVisited, i);
+                dfs(i);
             }
         }
     }
 
     // 对一个节点进行广度优先遍历的方法
-    private void bfs(boolean[] isVisited, int i) {
+    private void bfs(int i) {
         // 表示队列的头节点对应下标
         int u;
         // 临界节点w
@@ -152,7 +157,7 @@ public class Graph {
                     // 入队
                     queue.addLast(w);
                 }
-                // 以u去为前驱点，找到w后面的下一个境界点
+                // 以u去为前驱点，找到w后面的下一个临界点
                 w = getNextNeighbor(u, w);
             }
         }
@@ -162,7 +167,7 @@ public class Graph {
     public void bfs() {
         for (int i = 0; i < getNumOfVertex(); i++) {
             if (!isVisited[i]) {
-                bfs(isVisited, i);
+                bfs(i);
             }
         }
     }

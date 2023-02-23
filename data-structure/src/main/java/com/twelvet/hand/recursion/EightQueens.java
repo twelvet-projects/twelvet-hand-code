@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、八皇后
+ * @Description: 八皇后
  */
 public class EightQueens {
 

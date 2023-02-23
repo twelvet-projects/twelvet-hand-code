@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 、选择排序（每次循环选择最小的数值交换即可）
+ * @Description: 选择排序（每次循环选择最小的数值交换即可）
  */
 public class SelectSort {
 
