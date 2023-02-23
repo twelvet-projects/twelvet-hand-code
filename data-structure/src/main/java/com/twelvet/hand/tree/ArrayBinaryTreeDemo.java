@@ -36,6 +36,7 @@ class ArrayBinaryTree {
         // 如果数组为空，或者arr.length = 0
         if (arr == null || arr.length == 0) {
             System.out.println("数组为空，不能按照二叉树的前序遍历");
+            return;
         }
 
         // 输出当前这个元素

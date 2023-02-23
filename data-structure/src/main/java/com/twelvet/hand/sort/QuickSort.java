@@ -6,6 +6,7 @@ import java.util.Arrays;
  * @author twelvet
  * @WebSite www.twelvet.cn
  * @Description: 快速排序(取出中间值左右各自排序递归即可)
+ * 以中间值为标点，分别查找最大值和最小值交互，循环即可
  */
 public class QuickSort {
 
