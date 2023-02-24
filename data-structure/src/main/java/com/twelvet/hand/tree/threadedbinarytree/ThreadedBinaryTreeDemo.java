@@ -116,7 +116,7 @@ class ThreadedBinaryTree {
         // !!! 每处理一个节点后，让当前节点是下一个节点的前驱节点
         pre = node;
 
-        // 3. 在线索化
+        // 3. 再线索化
         threadedNodes(node.getRight());
     }
 
@@ -307,7 +307,7 @@ class HeroNode {
 
     }
 
-    // 编写前序遍历的方法
+    // 编写前序遍历的方法 从左遍历，到右输出
     public void perOrder() {
         // 先输出父节点
         System.out.println(this);
