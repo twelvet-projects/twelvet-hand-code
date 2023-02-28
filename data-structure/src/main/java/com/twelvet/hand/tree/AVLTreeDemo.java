@@ -9,13 +9,16 @@ public class AVLTreeDemo {
     public static void main(String[] args) {
         //int[] arr= {4,3,6,5,7,8};
         //int[] arr = {10,12,8,9,7,6};
-        int[] arr = {10, 11, 7, 6, 8, 9};
+        int[] arr = {9, 8, 10, 11};
 
         AVLTree avlTree = new AVLTree();
 
         for (int j : arr) {
             avlTree.add(new Node(j));
         }
+
+        avlTree.delNode(9);
+
         System.out.println("中序遍历~");
         avlTree.infixOrder();
         System.out.println("树的高度是：" + avlTree.getRoot().getHeight());
@@ -271,6 +274,7 @@ class Node {
         if (node == null) { //传入的节点为null，直接返回
             return;
         }
+        // 普通二叉树插入
         if (node.value < this.value) { //传入的节点小于当前节点，就放入当前节点的左子树
             if (this.left == null) { //当前节点的left为null，直接放入
                 this.left = node;
@@ -285,6 +289,8 @@ class Node {
                 this.right.add(node);
             }
         }
+
+        // 进行平衡二叉树处理
         //rightHeight()-leftHeight() > 1,不再是一颗AVL树
         //可以进行旋转处理使其变成AVL树
         if (getRightHeight() - getLeftHeight() > 1) {
@@ -299,6 +305,7 @@ class Node {
             }
             return; //这个步骤必须要
         }
+
         //leftHeight()-rightHeight() > 1,不再是一颗AVL树
         //可以进行旋转处理使其变成AVL树
         if (getLeftHeight() - getRightHeight() > 1) {
